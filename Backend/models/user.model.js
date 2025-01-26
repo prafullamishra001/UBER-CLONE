@@ -21,7 +21,7 @@ email:{
     type: String,
     required:true,
     unique:true,
-    minlength:[5,'email must be at least 3 characters']
+    minlength:[5,'email must be at least 5 characters']
 },
 password:{
     type:String,
