@@ -1,5 +1,5 @@
 import React from 'react'
-import link from 'react-router-dom'
+import {Link} from 'react-router-dom'
 
 const Home = () => {
     return (
@@ -7,10 +7,10 @@ const Home = () => {
             <img className='w-16 ml-8' src="https://upload.wikimedia.org/wikipedia/commons/c/cc/Uber_logo_2018.png" alt="" />
             <div className='bg-white py-4 pb-7 px-4'>
                 <h2 className='text-3xl ml-4 font-bold'>Get started with Uber</h2>
-                <link to='/login' className='flex items-center justify-center w-full bg-black text-white py-3 rounded mt-5'>Continue</link>
+                <Link to='/login' className='flex items-center justify-center w-full bg-black text-white py-3 rounded mt-5'>Continue</Link>
             </div>
 
-        </div>
+        </div>  
     )
 }
 export default Home
