@@ -23,7 +23,7 @@ const UserLogin = () => {
             <div>
             <img className='w-16 mb-10' src="https://upload.wikimedia.org/wikipedia/commons/c/cc/Uber_logo_2018.png" alt="" />
             <form onSubmit={(e)=>{submithandler(e)}}>
-                <h3 className='text-lg font-medium mb-2'>What is your email ?</h3>
+                <h3 className='text-lg font-medium mb-2'>Enter your email ?</h3>
                 <input 
                 required 
                 value={email}
@@ -53,7 +53,7 @@ const UserLogin = () => {
             <div>
                 <Link to='/captainlogin'
                  className='bg-[#10b461] flex items-center justify-center text-white font-semibold mb-7 rounded px-4 py-2 w-full text-lg placeholder:text-base' 
-                >Sign in as captain</Link>
+                >Log in as captain</Link>
             </div>
         </div>
     )
