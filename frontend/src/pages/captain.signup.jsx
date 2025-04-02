@@ -13,7 +13,7 @@ const CaptainSignup = () => {
             const submitHandler=(e)=>{
                 e.preventDefault();
                 setuserdata({
-                    username:{
+                    fullname:{
                         firstname:firstname,
                         lastname:lastname 
                     },

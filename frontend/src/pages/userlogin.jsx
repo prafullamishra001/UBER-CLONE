@@ -23,7 +23,7 @@ const UserLogin = () => {
             <div>
             <img className='w-16 mb-10' src="https://upload.wikimedia.org/wikipedia/commons/c/cc/Uber_logo_2018.png" alt="" />
             <form onSubmit={(e)=>{submithandler(e)}}>
-                <h3 className='text-lg font-medium mb-2'>Enter your email ?</h3>
+                <h3 className='text-lg font-medium mb-2'>Enter your email </h3>
                 <input 
                 required 
                 value={email}

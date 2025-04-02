@@ -12,7 +12,7 @@
         const submitHandler=(e)=>{
             e.preventDefault();
             setuserdata({
-                username:{
+                fullname:{
                     firstname:firstname,
                     lastname:lastname 
                 },
@@ -31,7 +31,7 @@
                             <div>
                             <img className='w-16 mb-10' src="https://upload.wikimedia.org/wikipedia/commons/c/cc/Uber_logo_2018.png" alt="" />
                             <form onSubmit={(e)=>{submitHandler(e)}}>
-                                <h3 className='text-base font-medium mb-2'>Enter your Name ?</h3>
+                                <h3 className='text-base font-medium mb-2'>Enter your Name </h3>
                                 <div className='flex gap-4 mb-5 '>
                                 <input 
                                 required 
