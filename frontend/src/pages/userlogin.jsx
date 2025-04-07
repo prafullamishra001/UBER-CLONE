@@ -1,18 +1,32 @@
-import React,{useState}from 'react'
+import React,{useState,useContext}from 'react'
 import {Link} from 'react-router-dom'
+import {UserDataContext} from '../context/usercontext'
+import {useNavigate} from 'react-router-dom'
+import axios from 'axios'
+
 
 const UserLogin = () => {
     const[email,setemail]=useState('') 
     const[password,setpassword]=useState('')   
     const[userdata,setuserdata]=useState({})
+
+    const {user,setuser}=useContext(UserDataContext);
+    const navigate=useNavigate()
     
-    const submithandler=(e)=>{
+    const submithandler=async (e)=>{
         e.preventDefault();
-        setuserdata({
+        const userData={
             email:email,
             password:password
-        })
-        
+        }
+    
+        const response=await axios.post(`${import.meta.env.VITE_BASE_URL}/users/login`,userData)        
+    if(response.status===200){
+        const data=response.data
+        setuser(data.user)
+        localStorage.setItem('token',data.token)
+        navigate('/home')
+    }
         setemail('')
         setpassword('')
     
@@ -44,7 +58,7 @@ const UserLogin = () => {
 
                 <button
                  className='bg-[#111] text-white font-semibold mb-2 rounded px-4 py-2 w-full text-lg placeholder:text-base' 
-                >login</button>
+                >Login</button>
                 <p className='text-center'>New here ?   <Link to='/signup' className='text-blue-600'>Create new account</Link></p>
 
             </form>
