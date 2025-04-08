@@ -8,6 +8,7 @@ import Userlogin from './pages/userlogin'
 import { UserDataContext } from './context/usercontext'
 import Home from './pages/home'
 import UserProtectedWrapper from './pages/UserProtectedWrapper'
+import Userlogout from './pages/Userlogout'
 
 const app=() => {
 
@@ -27,6 +28,11 @@ const app=() => {
                 <Home/>
               </UserProtectedWrapper>
              } />
+             <Route path='/user/logout' element={
+              <UserProtectedWrapper>
+              <Userlogout/>
+             </UserProtectedWrapper>
+             }/>
 
           </Routes>
 

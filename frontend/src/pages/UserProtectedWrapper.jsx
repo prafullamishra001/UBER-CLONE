@@ -13,7 +13,7 @@ const UserProtectedWrapper = ({
         if (!token) {
           navigate('/login');
         }
-      }, [token, navigate]);
+      }, [token]);  
     
       if (!token) return null;
  return (
