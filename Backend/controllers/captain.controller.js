@@ -31,9 +31,9 @@ module.exports.registerCaptain=async(req,res,next)=>{
             vehicleType:vehicle.vehicleType
         });
 
-        const Token= captain.generateAuthToken();
+        const token= captain.generateAuthToken();
 
-        res.status(201).json({Token,captain});
+        res.status(201).json({token,captain});
 }
 
 module.exports.loginCaptain=async(req,res,next)=>{
