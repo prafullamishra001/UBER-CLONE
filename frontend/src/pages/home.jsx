@@ -46,8 +46,8 @@ e.preventDefault();
             <img className='h-full w-full object-cover 'src="https://www.medianama.com/wp-content/uploads/2018/06/Screenshot_20180619-112715.png.png" alt="" />
         </div>
 
-        <div className='flex flex-col justify-end h-screen absolute top-0 w-full'> 
-           <div className='h-[30%] p-6 bg-white relative'>
+        <div className='flex flex-col justify-end h-screen absolute top-0 w-full '> 
+           <div className='h-[25%] p-6 bg-white relative '>
             <h5  ref={panelcloseRef}
             onClick={()=>{
                 setPanelOpen(false)
@@ -59,7 +59,7 @@ e.preventDefault();
             <form onSubmit={(e)=>{
                 submitHandler(e)
             }}>
-                <div className="line absolute h-16 w-1 top-[45%] left-10 bg-gray-900 rounded-full"></div>
+                <div className="line absolute h-16 w-1 top-[54%] left-10 bg-gray-900 rounded-full"></div>
                 <input 
                 onClick={()=>{
                     setPanelOpen(true)
