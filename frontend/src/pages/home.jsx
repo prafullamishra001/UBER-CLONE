@@ -5,6 +5,7 @@
     import LocationSearchPanel from './../components/locationsearchpanel';
     import ConfirmedRide from '../components/confirmedride';
     import Vehiclepanel from '../components/vehiclepanel';
+import LookingForDriver from '../components/lookingfordriver';
   
    
 
@@ -15,10 +16,12 @@
         const [panelopen,setPanelOpen]=useState(false)
         const vehiclepanelref=useRef(null)
         const confirmedridepanelref=useRef(null)    
+        const lookingforforDriverref=useRef(null)
         const panelRef=useRef(null)
         const panelcloseRef=useRef(null)
         const [vehiclepanelopen,setvehiclepanelopen]=useState(false)
         const [confirmedridepanel,setconfirmedridepanel]=useState(false)
+        const [lookingfordriver,setlookingfordriver]=useState(false)
         
         const submitHandler=(e)=>{
     e.preventDefault();
@@ -71,7 +74,19 @@
                 transform:'translateY(100%)',
             })
         }
-        },[confirmedridepanel])  
+        },[confirmedridepanel]) 
+        
+        useGSAP(function(){
+            if(lookingfordriver){
+                gsap.to(lookingforforDriverref.current,{
+                    transform:'translateY(0%)',
+                })
+            }else{
+                gsap.to(lookingforforDriverref.current,{
+                    transform:'translateY(100%)',
+                })
+            }
+            },[lookingfordriver])  
 
 
         return(
@@ -124,7 +139,10 @@
             <Vehiclepanel setconfirmedridepanel={setconfirmedridepanel}   setvehiclepanelopen={setvehiclepanelopen}/>
             </div>
             <div ref={confirmedridepanelref} className='fixed w-full z-10 bottom-0 translate-y-full px-3 py-6 pt-12 bg-white'>
-            <ConfirmedRide/>
+            <ConfirmedRide setconfirmedridepanel={setconfirmedridepanel} setlookingfordriver={setlookingfordriver}/>
+            </div>
+            <div ref={lookingforforDriverref} className='fixed w-full z-10 bottom-0 translate-y-full px-3 py-6 pt-12 bg-white'>
+            <LookingForDriver setlookingfordriver={setlookingfordriver}/>
             </div>
             </div>
             

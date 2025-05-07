@@ -1,5 +1,5 @@
 import Recat from 'react'
-const ConfirmedRide = () => { 
+const ConfirmedRide = (props) => { 
     return(
         <div>
            <h5 className='p-1 text-center w-full absolute top-0' onClick={()=>{
@@ -36,7 +36,12 @@ const ConfirmedRide = () => {
                 </div>
 
              </div>
-             <button className=' w-full   mt-5 bg-green-600 text-white font-semibold p-2 rounded-lg' >Confirm</button>
+             <button onClick={()=>{
+               props.setlookingfordriver(true)
+               props.setconfirmedridepanel(false)
+    
+             }
+             } className=' w-full   mt-5 bg-green-600 text-white font-semibold p-2 rounded-lg' >Confirm</button>
              </div>
 
 
