@@ -120,10 +120,10 @@
                 <LocationSearchPanel setPanelOpen={setPanelOpen} setvehiclepanelopen={setvehiclepanelopen}/>
             </div>
             </div>
-            <div ref={vehiclepanelref} className='fixed w-full z-10 bottom-0 translate-y-full px-3 py-10 pt-14 bg-white'>
+            <div ref={vehiclepanelref} className='fixed w-full z-10 bottom-0 translate-y-full px-3 py-10 pt-12 bg-white'>
             <Vehiclepanel setconfirmedridepanel={setconfirmedridepanel}   setvehiclepanelopen={setvehiclepanelopen}/>
             </div>
-            <div ref={confirmedridepanelref} className='fixed w-full z-10 bottom-0 translate-y-full px-3 py-10 pt-14 bg-white'>
+            <div ref={confirmedridepanelref} className='fixed w-full z-10 bottom-0 translate-y-full px-3 py-6 pt-12 bg-white'>
             <ConfirmedRide/>
             </div>
             </div>
