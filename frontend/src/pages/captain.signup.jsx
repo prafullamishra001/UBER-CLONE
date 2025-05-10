@@ -128,10 +128,10 @@ const CaptainSignup = () => {
                     className='bg-[#eeeeee] rounded px-4 py-2 border w-1/2 text-base placeholder:text-sm'
                     value={vehicletype}
                     onChange={(e)=>setvehicletype(e.target.value)}>
-                        <option value="">Select Vehicle Type</option>
-                        <option value="car">Car</option>
-                        <option value="auto">Auto</option>
-                        <option value="motorcycle">Motorcycle</option>
+                        <option  className='text-xs center-justfied' value="">Select Vehicle Type</option>
+                        <option  className='text-xs center-justfied' value="car">Car</option>
+                        <option className='text-xs center-justfied'  value="auto">Auto</option>
+                        <option className='text-xs center-justfied'  value="motorcycle">Motorcycle</option>
                     </select>
 
                     <input 
@@ -152,7 +152,7 @@ const CaptainSignup = () => {
             </div>
 
             <div>
-               <p className='text-[10px] leading-tight'>This side is protected by reCAPTCHA and the <span className='underline'>Google Privacy Policy</span>
+               <p className='text-[10px] mt-6 leading-tight'>This side is protected by reCAPTCHA and the <span className='underline'>Google Privacy Policy</span>
                and <span className='underline'>Terms of Service apply</span></p>
             </div>
         </div>
