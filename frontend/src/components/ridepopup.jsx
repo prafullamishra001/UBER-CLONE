@@ -45,11 +45,12 @@ return(
 
              </div>
              <button onClick={()=>{
-       
+        props.setConfirmridepopuppanel(true)    
              }
              } className=' w-full   mt-5 bg-green-600 text-white font-semibold p-2 rounded-lg' >Accept</button>
 <button onClick={()=>{
         props.setridepopuppanel(false)
+        
              }
              } className=' w-full   mt-1 bg-gray-300 font-semibold p-2 rounded-lg' >Ignore</button>
 
