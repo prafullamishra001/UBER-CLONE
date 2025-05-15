@@ -89,7 +89,7 @@ import WaitingForDriver from '../components/waitingfordriver';
                     transform:'translateY(100%)',
                 })
             }
-            },[lookingfordriver])  
+            },[lookingfordriver])   
 
             useGSAP(function(){
                 if(waitingfordriver){
