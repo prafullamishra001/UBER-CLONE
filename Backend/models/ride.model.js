@@ -23,8 +23,6 @@ const rideSchema = new mongoose.Schema({
         required:true
     },
 
-
-
     status:{
         type:String,
         enum:['pending','accepted','ongoing','completed','cancelled'],
