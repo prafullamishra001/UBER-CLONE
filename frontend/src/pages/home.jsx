@@ -17,7 +17,7 @@ import LiveTracking from '../components/LiveTracking';
   
 
     const Home=() => {
-        const [pickUp,setPickUp]=useState('')
+        const [pickUp,setpickUp]=useState('')
         const [destination,setdestination]=useState('')
         const [panelopen,setPanelOpen]=useState(false)
         const vehiclepanelref=useRef(null)
@@ -30,7 +30,7 @@ import LiveTracking from '../components/LiveTracking';
         const [confirmedridepanel,setconfirmedridepanel]=useState(false)
         const [lookingfordriver,setlookingfordriver]=useState(false)
         const [waitingfordriver,setwaitingfordriver]=useState(false)
-        const [ pickupSuggestions, setPickupSuggestions ] = useState([])
+        const [ pickUpSuggestions, setpickUpSuggestions ] = useState([])
         const [ destinationSuggestions, setDestinationSuggestions ] = useState([])
         const [ activeField, setActiveField ] = useState(null)
         const [ fare, setFare ] = useState({})
@@ -63,8 +63,8 @@ import LiveTracking from '../components/LiveTracking';
             navigate('/riding', { state: { ride } }) // Updated navigate to include ride data
         })
 
-        const handlePickupChange = async (e) => {
-            setPickUp(e.target.value)
+        const handlepickUpChange = async (e) => {
+            setpickUp(e.target.value)
             try {
                 const response = await axios.get(`${import.meta.env.VITE_BASE_URL}/maps/get-suggestions`, {
                     params: { input: e.target.value },
@@ -73,7 +73,7 @@ import LiveTracking from '../components/LiveTracking';
                     }
     
                 })
-                setPickupSuggestions(response.data)
+                setpickUpSuggestions(response.data)
             } catch {
                 // handle error
             }
@@ -205,6 +205,21 @@ import LiveTracking from '../components/LiveTracking';
             
             
                 }
+                
+
+               async function createRide(){
+                const response = await axios.post(`${import.meta.env.VITE_BASE_URL}/rides/create`,{
+                        pickUp,
+                        destination,
+                        vehicleType
+                    }, {
+                        headers: {
+                            Authorization: `Bearer ${localStorage.getItem('token')}`
+                        }
+                    })
+                    console.log(response.data)
+
+                }
 
 
         return(
@@ -232,10 +247,10 @@ import LiveTracking from '../components/LiveTracking';
                     <input 
                     onClick={()=>{
                         setPanelOpen(true)
-                        setActiveField('pickup')
+                        setActiveField('pickUp')
                     }}
                     value={pickUp} 
-                    onChange={handlePickupChange}
+                    onChange={handlepickUpChange}
                     className='bg-[#eee] px-12 py-2 text-lg rounded-lg w-full'
                     type="text"
                     placeholder='Add a pick-up location'
@@ -259,20 +274,21 @@ import LiveTracking from '../components/LiveTracking';
             </div>
             
             <div ref={panelRef} className='bg-white h-0'>
-                <LocationSearchPanel suggestions={activeField === 'pickup' ? pickupSuggestions : destinationSuggestions} setPanelOpen={setPanelOpen} setvehiclepanelopen={setvehiclepanelopen} 
-                 setPickUp={setPickUp}
+                <LocationSearchPanel suggestions={activeField === 'pickUp' ? pickUpSuggestions : destinationSuggestions} setPanelOpen={setPanelOpen} setvehiclepanelopen={setvehiclepanelopen} 
+                 setpickUp={setpickUp}
                  setdestination={setdestination}
                  activeField={activeField}/>
             </div>
             </div>
 
             <div ref={vehiclepanelref} className='fixed w-full z-10 bottom-0 translate-y-full px-3 py-10 pt-12 bg-white'>
-            <Vehiclepanel  selectVehicle={setVehicleType}
+            <Vehiclepanel  setVehicleType={setVehicleType}
                     fare={fare} setconfirmedridepanel={setconfirmedridepanel}   setvehiclepanelopen={setvehiclepanelopen}/>
             </div>
 
             <div ref={confirmedridepanelref} className='fixed w-full z-10 bottom-0 translate-y-full px-3 py-6 pt-12 bg-white'>
             <ConfirmedRide  createRide={createRide}
+            setVehicleType={setVehicleType}
                     pickUp={pickUp}
                     destination={destination}
                     fare={fare}
@@ -281,6 +297,7 @@ import LiveTracking from '../components/LiveTracking';
 
             <div ref={lookingforforDriverref} className='fixed w-full z-10 bottom-0 translate-y-full px-3 py-6 pt-12 bg-white'>
             <LookingForDriver   createRide={createRide}
+            setVehicleType={setVehicleType}
                     pickUp={pickUp}
                     destination={destination}
                     fare={fare}

@@ -2,11 +2,11 @@ const ridemodel = require('../models/ride.model');
 const mapService = require('./maps.service');
 const crypto = require('crypto');
 
-async function getFare(pickup,destination){
-   if(!pickup || !destination) {
-        throw new Error('Pickup and destination are required');
+async function getFare(pickUp,destination){
+   if(!pickUp || !destination) {
+        throw new Error('pickUp and destination are required');
     }
-    const distanceTime =await mapService.getDistanceTime(pickup, destination);
+    const distanceTime =await mapService.getDistanceTime(pickUp, destination);
 
     const baseFare={
 auto:30,
