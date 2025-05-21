@@ -26,17 +26,18 @@ car:3,
 motorcycle:1.5
     }
 
-    console.log(distanceTime);
+  
     const fare={
-        auto:baseFare.auto + ((distanceTime.distance.value/1000) * perKmRate.auto) + ((distanceTime.duration.value/60) * perMinuteRate.auto),
-        car:baseFare.car + ((distanceTime.distance.value/1000) * perKmRate.car) + ((distanceTime.duration.value/60) * perMinuteRate.car),
-        motorcycle:baseFare.motorcycle + ((distanceTime.distance.value/1000) * perKmRate.motorcycle) + ((distanceTime.duration.value/60) * perMinuteRate.motorcycle)
+        auto:Math.round(baseFare.auto + ((distanceTime.distance.value/1000) * perKmRate.auto) + ((distanceTime.duration.value/60) * perMinuteRate.auto)),
+        car:Math.round(baseFare.car + ((distanceTime.distance.value/1000) * perKmRate.car) + ((distanceTime.duration.value/60) * perMinuteRate.car)),
+        motorcycle:Math.round(baseFare.motorcycle + ((distanceTime.distance.value/1000) * perKmRate.motorcycle) + ((distanceTime.duration.value/60) * perMinuteRate.motorcycle))
 
     };
     return fare;
    
 
 }
+module.exports.getFare=getFare;
 
 function getOtp(num){
     function generateOtp(num){
@@ -47,15 +48,15 @@ function getOtp(num){
 }
 
 module.exports.createRide = async ({
-    user,pickup,destination,vehicleType
+    user,pickUp,destination,vehicleType
 }) => {
-    if(!user || !pickup || !destination || !vehicleType){
+    if(!user || !pickUp || !destination || !vehicleType){
         throw new Error('All fields are required');
     }
-    const fare = await getFare(pickup, destination);
+    const fare = await getFare(pickUp, destination);
     const ride = ridemodel.create({
         user,
-        pickup,
+        pickUp,
         destination,
         otp:getOtp(4),
         fare: fare[vehicleType],

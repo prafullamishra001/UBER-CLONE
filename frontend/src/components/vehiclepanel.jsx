@@ -1,6 +1,7 @@
 import React from 'react'
 
 const Vehiclepanel = (props) => {
+    
 return (
     <div>
         <h5 className='p-1 text-center w-full absolute top-0' onClick={()=>{
@@ -17,8 +18,9 @@ return (
                     <h5 className='font-medium text-sm'>2 minutes away</h5>
                     <p className='font-normal text-xs text-gray-600'>Affordable compact rides</p>
                 </div>
-                <h2 className='text-lg font-semibold'>₹193.20</h2>
-            </div>  
+                <h2 className='text-lg font-semibold'>₹{props.fare.car}</h2>
+            </div> 
+           
 
             <div onClick={()=>{
                 props.setconfirmedridepanel(true)
@@ -29,7 +31,7 @@ return (
                     <h5 className='font-medium text-sm'>3 minutes away</h5>
                     <p className='font-normal text-xs text-gray-600'>Affordable motorcycle rides </p>
                 </div>
-                <h2 className='text-lg font-semibold'>₹65</h2>
+                <h2 className='text-lg font-semibold'>₹{props.fare.motorcycle}</h2>
             </div> 
 
               <div onClick={()=>{
@@ -41,7 +43,7 @@ return (
                     <h5 className='font-medium text-sm'>3 minutes away</h5>
                     <p className='font-normal text-xs text-gray-600'>Affordable auto rides </p>
                 </div>
-                <h2 className='text-lg font-semibold'>₹118.85</h2>
+                <h2 className='text-lg font-semibold'>₹{props.fare.auto}</h2>
             </div>  
     </div>
 )

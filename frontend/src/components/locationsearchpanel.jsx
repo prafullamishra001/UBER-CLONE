@@ -1,28 +1,31 @@
 import React from 'react'
 
-const LocationSearchPanel = (props) => {
+const LocationSearchPanel = ({ suggestions, setVehiclePanel, setPanelOpen, setPickUp, setdestination, activeField }) => {
 
 
-  const locations=[
-    "B-179 Rama green city, khamtarai road, bilaspur C.G",
-    "C-173 Natures valley, kargi road, bilaspur C.G",
-    "D-179 Dream city, nutan road, bilaspur C.G",
-    "E-179 Green city, khamtarai road, bilaspur C.G",]
+  const handleSuggestionClick = (suggestion) => {
+    if (activeField === 'pickup') {
+        setPickUp(suggestion)
+    } else if (activeField === 'destination') {
+        setdestination(suggestion)
+    }
+
+}
+
 
 return(
     <div>
       {
-        locations.map(function(elem,idx){
-          return <div key={idx} onClick={()=>{
-            props.setvehiclepanelopen(true)
-            props.setPanelOpen(false)
-          }} 
+        suggestions.map((elem,idx)=>(
+          <div key={idx} onClick={()=>
+            handleSuggestionClick(elem)
+          }
           className='flex gap-4 border-2 p-3 border-gray-50 active:border-black rounded-xl items-center justify-start pt-10 my-2'>
           <h2 className='bg-[#eee] h-8 flex items-center justify-center  w-12 rounded-full'><i className="ri-map-pin-line"></i></h2>
         <h4 className='font-medium'>
           {elem}</h4>  
       </div>
-        })
+        ))
       }
   </div>  
 )

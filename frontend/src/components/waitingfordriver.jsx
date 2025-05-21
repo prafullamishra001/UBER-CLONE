@@ -9,8 +9,8 @@ const WaitingForDriver = (props) => {
 
          <div className='flex items-center justify-between'>
          <img className='h-10' src="https://www.uber-assets.com/image/upload/f_auto,q_auto:eco,c_fill,h_538,w_956/v1688398971/assets/29/fbb8b0-75b1-4e2a-8533-3a364e7042fa/original/UberSelect-White.png" alt="" />
-         <div calssName='text-right'>
-            <h2 calssName='text-lg font-medium'>Sarthak</h2>
+         <div className='text-right'>
+            <h2 className='text-lg font-medium'>Sarthak</h2>
             <h4 className='text-xl font-semibold -mt-1 -mb-1'>MP04 AB 1234</h4>
             <p className='text-sm text-gray-600'>Maruti Suzuki Alto</p>
          </div>

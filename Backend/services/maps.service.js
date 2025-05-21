@@ -1,16 +1,13 @@
 const axios = require('axios');
+const captainModel = require('../models/captain.model');
 
 module.exports.getAddressCoordinate=async(address)=>{
-    const apiKey = process.env.GOOGLE_MAPS_API;
-    const url='https://maps.googleapis.com/maps/api/geocode/json';
+    const apiKey = process.env.VITE_GOOGLE_MAPS_API;
+  const url = `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(address)}&key=${apiKey}`;
 
     try {
-        const response = await axios.get(url, {
-            params: {
-                address: address,
-                key: apiKey
-            }
-        });
+        const response = await axios.get(url);
+    
 
         if (response.data.status === 'OK') {
             const location = response.data.results[0].geometry.location;
@@ -31,17 +28,11 @@ module.exports.getDistanceTime=async(origin,destination)=>{
 if(!origin || !destination){
     throw new Error('Origin and destination are required');
 }
-const apiKey = process.env.GOOGLE_MAPS_API;
-const url = 'https://maps.googleapis.com/maps/api/distancematrix/json';
+const apiKey = process.env.VITE_GOOGLE_MAPS_API;
+const url = `https://maps.googleapis.com/maps/api/distancematrix/json?origins=${encodeURIComponent(origin)}&destinations=${encodeURIComponent(destination)}&key=${apiKey}`;
 
 try{
-    const response = await axios.get(url, {
-        params: {
-            origins: origin,
-            destinations: destination,
-            key: apiKey
-        }
-    }); 
+    const response = await axios.get(url);
 
     if (response.data.status === 'OK') {
         if(response.data.rows[0].elements[0].status === 'ZERO_RESULTS'){
@@ -64,18 +55,13 @@ module.exports.getAutoCompleteSuggestions=async(input)=>{
         throw new Error('Query is required');
     }
 
-    const apiKey = process.env.GOOGLE_MAPS_API;
-    const url = 'https://maps.googleapis.com/maps/api/place/autocomplete/json';
+    const apiKey = process.env.VITE_GOOGLE_MAPS_API;
+    const url = `https://maps.googleapis.com/maps/api/place/autocomplete/json?input=${encodeURIComponent(input)}&key=${apiKey}`;
 
     try{
-        const response = await axios.get(url, {
-            params: {
-                input: input,
-                key: apiKey
-            }
-        });
+        const response = await axios.get(url);
         if (response.data.status === 'OK') {
-            return response.data.predictions;
+            return response.data.predictions.map(prediction => prediction.description).filter(value => value);
         } else {
             throw new Error('Unable to fetch suggestions');
         }
@@ -86,3 +72,18 @@ module.exports.getAutoCompleteSuggestions=async(input)=>{
 
 }
 
+module.exports.getCaptainsInTheRadius = async (ltd, lng, radius) => {
+
+    // radius in km
+
+
+    const captains = await captainModel.find({
+        location: {
+            $geoWithin: {
+                $centerSphere: [ [ ltd, lng ], radius / 6371 ]
+            }
+        }
+    });
+
+    return captains;
+}
