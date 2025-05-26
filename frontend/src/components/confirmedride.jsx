@@ -1,4 +1,4 @@
-import Recat from 'react'
+import React from 'react'
 const ConfirmedRide = (props) => { 
     return(
         <div>
@@ -36,6 +36,7 @@ const ConfirmedRide = (props) => {
                 </div>
 
              </div>
+            
              <button onClick={()=>{
                props.setlookingfordriver(true)
                props.setconfirmedridepanel(false)

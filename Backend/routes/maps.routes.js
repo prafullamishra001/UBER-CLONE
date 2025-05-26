@@ -24,5 +24,8 @@
             authMiddleware.authUser,mapController.getAutoCompleteSuggestions
         )
 
-
     module.exports=router;
+
+
+
+   

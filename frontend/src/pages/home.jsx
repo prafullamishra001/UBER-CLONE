@@ -22,7 +22,7 @@ import LiveTracking from '../components/LiveTracking';
         const [panelopen,setPanelOpen]=useState(false)
         const vehiclepanelref=useRef(null)
         const confirmedridepanelref=useRef(null)    
-        const lookingforforDriverref=useRef(null)
+        const lookingforDriverref=useRef(null)
         const waitingfordriverref=useRef(null)
         const panelRef=useRef(null)
         const panelcloseRef=useRef(null)
@@ -47,12 +47,12 @@ import LiveTracking from '../components/LiveTracking';
             if (socket && user && user._id) {
             socket.emit("join", { userType: "user", userId: user._id })
             }
-        }, [socket,user])
+        }, [user])
     
         socket.on('ride-confirmed', ride => {
     
     
-            setVehicleFound(false)
+            setlookingfordriver(false)
             setwaitingfordriver(true)
             setRide(ride)
         })
@@ -150,11 +150,11 @@ import LiveTracking from '../components/LiveTracking';
         
         useGSAP(function(){
             if(lookingfordriver){
-                gsap.to(lookingforforDriverref.current,{
+                gsap.to(lookingforDriverref.current,{
                     transform:'translateY(0%)',
                 })
             }else{
-                gsap.to(lookingforforDriverref.current,{
+                gsap.to(lookingforDriverref.current,{
                     transform:'translateY(100%)',
                 })
             }
@@ -207,19 +207,7 @@ import LiveTracking from '../components/LiveTracking';
                 }
                 
 
-               async function createRide(){
-                const response = await axios.post(`${import.meta.env.VITE_BASE_URL}/rides/create`,{
-                        pickUp,
-                        destination,
-                        vehicleType
-                    }, {
-                        headers: {
-                            Authorization: `Bearer ${localStorage.getItem('token')}`
-                        }
-                    })
-                    console.log(response.data)
-
-                }
+              
 
 
         return(
@@ -292,10 +280,12 @@ import LiveTracking from '../components/LiveTracking';
                     pickUp={pickUp}
                     destination={destination}
                     fare={fare}
-                    vehicleType={vehicleType} setconfirmedridepanel={setconfirmedridepanel} setvehiclepanelopen={setvehiclepanelopen} setlookingfordriver={setlookingfordriver}/>
+                    vehicleType={vehicleType} 
+    
+                    setconfirmedridepanel={setconfirmedridepanel} setvehiclepanelopen={setvehiclepanelopen} setlookingfordriver={setlookingfordriver}/>
             </div>
 
-            <div ref={lookingforforDriverref} className='fixed w-full z-10 bottom-0 translate-y-full px-3 py-6 pt-12 bg-white'>
+            <div ref={lookingforDriverref} className='fixed w-full z-10 bottom-0 translate-y-full px-3 py-6 pt-12 bg-white'>
             <LookingForDriver   createRide={createRide}
             setVehicleType={setVehicleType}
                     pickUp={pickUp}
@@ -307,7 +297,8 @@ import LiveTracking from '../components/LiveTracking';
             <div ref={waitingfordriverref} className='fixed w-full z-10 bottom-0 px-3 py-6 pt-12 bg-white'>
             <WaitingForDriver     ride={ride}
                     setlookingfordriver={setlookingfordriver}
-                    setwaitingfordriver={setwaitingfordriver} waitingfordriver={waitingfordriver}/>
+                    setwaitingfordriver={setwaitingfordriver}
+                     waitingfordriver={waitingfordriver}/>
             </div>
 
             </div>
