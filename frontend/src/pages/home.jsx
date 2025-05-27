@@ -56,6 +56,8 @@ import LiveTracking from '../components/LiveTracking';
             setwaitingfordriver(true)
             setRide(ride)
         })
+
+        
     
         socket.on('ride-started', ride => {
             console.log("ride")

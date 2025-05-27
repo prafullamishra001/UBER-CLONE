@@ -27,4 +27,11 @@ router.post('/confirm',
     rideController.confirmRide
 )
 
+router.get('/start-ride',
+    authMiddleware.authCaptain,
+    query('rideId').isMongoId().withMessage('Ride ID is required'),
+    query('otp').isString().isLength({ min: 4, max: 4 }).withMessage('OTP must be a 4-digit number'),
+    rideController.startRide
+)
+
 module.exports=router;
