@@ -9,6 +9,8 @@ import ConfirmRidepopup from './../components/confirmridepopup';
 import {useEffect,useContext} from 'react';
 import { SocketContext } from '../context/SocketContext';
 import {CaptainDataContext} from '../context/captaincontext';
+import axios from 'axios';
+
 
 const Captainhome=()=>{
     const[ridepopuppanel,setridepopuppanel]=useState(false)
@@ -48,6 +50,14 @@ const Captainhome=()=>{
 
     }, [])
 
+     socket.on('new-ride', (data) => {
+         
+          setRide(data)
+          setridepopuppanel(true)
+    })
+
+
+
     async function confirmRide(rideId) {
     
         const response= await axios.post(`${import.meta.env.VITE_BASE_URL}/rides/confirm`,{
@@ -63,11 +73,7 @@ const Captainhome=()=>{
     setConfirmridepopuppanel(true)
 }
 
-    socket.on('new-ride', (data) => {
-          console.log(data)
-          setRide(data)
-          setridepopuppanel(true)
-    })
+
 
 
     useGSAP(function(){

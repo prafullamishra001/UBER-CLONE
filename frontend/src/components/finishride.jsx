@@ -74,8 +74,7 @@ const FinishRide = (props) => {
 
            <button
            onClick={endRide} 
-           className=' w-full text-large flex justify-center  bg-gray-200 text-black font-semibold p-3 rounded-lg' >Cancel Ride</button>
-            className=' w-full text-large flex justify-center  mt-5 bg-green-600 text-white font-semibold p-3 rounded-lg' >Finish Ride</button>
+         className=' w-full text-large flex justify-center  mt-5 bg-green-600 text-white font-semibold p-3 rounded-lg'>Finish Ride</button>
 
         
 

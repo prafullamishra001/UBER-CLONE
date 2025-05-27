@@ -3,6 +3,7 @@ import { Link,useLocation} from 'react-router-dom'
 import { useEffect,useContext} from 'react';
 import { SocketContext } from './../context/SocketContext';
 import {useNavigate} from 'react-router-dom';
+import LiveTracking from './../components/LiveTracking';
 
 const Riding = () => {
     const location=useLocation();
@@ -20,7 +21,7 @@ return(
         <i className=" text-lg font-medium ri-home-9-fill"></i>
         </Link>
     <div className='h-1/2'>
-    <img className='h-full w-full object-cover 'src="https://www.medianama.com/wp-content/uploads/2018/06/Screenshot_20180619-112715.png.png" alt="" />
+    <LiveTracking/>
     </div>
     <div className='h-1/2 p-4'>
     <div className='flex items-center justify-between'>
