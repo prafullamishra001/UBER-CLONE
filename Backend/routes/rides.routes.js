@@ -34,4 +34,10 @@ router.get('/start-ride',
     rideController.startRide
 )
 
+router.post('/end-ride',
+    authMiddleware.authCaptain,
+    body('rideId').isMongoId().withMessage('Ride ID is required'),
+    rideController.endRide
+)
+
 module.exports=router;

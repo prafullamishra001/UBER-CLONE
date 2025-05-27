@@ -89,7 +89,7 @@ captain:captain._id,
    return ride;
 }
 
-module.exports.startRide = async ({rideId,otp,captain}) => {
+module.exports.startRide = async ({rideId,captain}) => {
     if(!rideId || !otp) {
         throw new Error('Ride ID and OTP are required');
     }
@@ -117,6 +117,38 @@ module.exports.startRide = async ({rideId,otp,captain}) => {
 
     sendMessageToSocketId(ride.user.socketId, {
         event: 'ride-started',
+        data: ride,
+    });
+
+    return ride;
+}
+
+module.exports.endRide = async ({rideId,captain}) => {
+    if(!rideId) {
+        throw new Error('Ride ID is required');
+    }
+
+    const ride = await rideModel.findOne({
+        _id: rideId,
+        captain: captain._id,
+    }).populate('user').populate('captain').select('+otp');
+
+    if(!ride) {
+        throw new Error('Ride not found');
+    }
+
+    if(ride.status !== 'ongoing') {
+        throw new Error('Ride is not ongoing');
+    }
+
+    await rideModel.findOneAndUpdate({
+        _id: rideId,
+    }, {
+        status: 'completed',
+    });
+
+    sendMessageToSocketId(ride.user.socketId, {
+        event: 'ride-completed',
         data: ride,
     });
 
