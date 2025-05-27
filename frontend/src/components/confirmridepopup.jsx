@@ -13,7 +13,7 @@ const ConfirmRidepopup=(props)=>{
         const response= await axios.get(`${import.meta.env.VITE_BASE_URL}/rides/start-ride`,{
            params:{ rideId:props.ride._id,
             otp:otp
-        }
+        },
          headers:{
             Authorization: `Bearer ${localStorage.getItem('token')}`
     }
@@ -21,7 +21,7 @@ const ConfirmRidepopup=(props)=>{
     if(response.status===200){
         props.setConfirmridepopuppanel(false)
         props.setridepopuppanel(false)
-        navigate('/captain-riding')
+        navigate('/captain-riding',{state:{ride:props.ride}})
     }
 
 }
