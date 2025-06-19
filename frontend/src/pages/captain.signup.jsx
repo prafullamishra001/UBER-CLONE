@@ -60,7 +60,10 @@ const CaptainSignup = () => {
         <div>
         <div className='p-7 h-screen flex flex-col justify-between'>
             <div>
-            <img className='w-32 h-auto mb-10' src="https://i.pinimg.com/736x/9e/79/bd/9e79bd2ae97f71e39bc20126a50a0ceb.jpg" alt="" />  
+            <img className='w-32 h-auto mb-10' src="https://i.pinimg.com/736x/9e/79/bd/9e79bd2ae97f71e39bc20126a50a0ceb.jpg" alt="" /> 
+                                   <div className="text-3xl ml-0 mb-4 font-bold text-black-100 tracking-wide" style={{ fontFamily: 'Montserrat' }}>
+  WayGo
+</div> 
             <form onSubmit={(e)=>{submitHandler(e)}}>
                 <h3 className='text-base font-medium mb-2'>Enter your Name ?</h3>
                 <div className='flex gap-4 mb-5 '>

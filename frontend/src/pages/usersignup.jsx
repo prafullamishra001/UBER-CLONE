@@ -41,7 +41,7 @@
             <div>
                         <div className='p-7 h-screen flex flex-col justify-between'>
                             <div>
-                             <div className="text-3xl ml-8 font-bold text-black-100 tracking-wide" style={{ fontFamily: 'Montserrat' }}>
+                       <div className="text-3xl ml-0 mb-4 font-bold text-black-100 tracking-wide" style={{ fontFamily: 'Montserrat' }}>
   WayGo
 </div>
                             <form onSubmit={(e)=>{submitHandler(e)}}>
