@@ -58,10 +58,10 @@ const Captainhome=()=>{
 
 
 
-    async function confirmRide(rideId) {
+    async function confirmRide() {
     
         const response= await axios.post(`${import.meta.env.VITE_BASE_URL}/rides/confirm`,{
-            rideId:rideId,
+            rideId:ride._id,
             captainId:captain._id,
 
         },{
@@ -108,7 +108,9 @@ const Captainhome=()=>{
     return(
         <div className='h-screen'>
                 <div className='fixed p-6 top-0 flex items-center justify-between w-screen'>
-                    <img  className='w-16' src="https://upload.wikimedia.org/wikipedia/commons/c/cc/Uber_logo_2018.png" alt="" />
+   <div className="text-3xl ml-0 mb-4 font-bold text-black-100 tracking-wide" style={{ fontFamily: 'Montserrat' }}>
+  WayGo
+</div>
                     <Link to='/Home' className='  h-10 w-10 bg-white flex items-center justify-center rounded-full'>
                     <i className=" text-lg font-medium ri-logout-box-line"></i>
                     </Link>

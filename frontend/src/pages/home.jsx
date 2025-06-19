@@ -207,16 +207,15 @@ import LiveTracking from '../components/LiveTracking';
             
             
                 }
-                
 
               
 
 
         return(
             <div className='h-screen overflow-hidden'>
-                <img className='w-16 absolute mt-5 ml-5' src="https://upload.wikimedia.org/wikipedia/commons/c/cc/Uber_logo_2018.png" alt="" />
+
                 <div className='h-screen w-screen'>
-                {/* image for temporary use  */}
+               
                 <LiveTracking />
             </div>
 
@@ -233,7 +232,7 @@ import LiveTracking from '../components/LiveTracking';
                 <form onSubmit={(e)=>{
                     submitHandler(e)
                 }}>
-                    <div className="line absolute h-16 w-1 top-[45%] left-10 bg-gray-900 rounded-full"></div>
+                    <div className="line absolute h-16 w-1 top-[35%] left-10 bg-gray-900 rounded-full"></div>
                     <input 
                     onClick={()=>{
                         setPanelOpen(true)

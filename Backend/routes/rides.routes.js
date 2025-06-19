@@ -23,8 +23,8 @@ router.get('/get-fare',
 router.post('/confirm',
     authMiddleware.authCaptain,
     body('rideId').isMongoId().withMessage('Ride ID is required'),
-    body('otp').isString().isLength({ min: 4, max: 4 }).withMessage('OTP must be a 4-digit number'),
     rideController.confirmRide
+   
 )
 
 router.get('/start-ride',

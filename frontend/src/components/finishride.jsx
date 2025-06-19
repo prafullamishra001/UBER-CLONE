@@ -9,7 +9,7 @@ const FinishRide = (props) => {
     const navigate = useNavigate();
 
     async function endRide() {
-    const response = await axios.post(`${import.meta.env.VITE_API_URL}/rides/end-ride`, {
+    const response = await axios.post(`${import.meta.env.VITE_BASE_URL}/rides/end-ride`, {
    
         rideId: props.ride._id  
 
@@ -20,7 +20,7 @@ const FinishRide = (props) => {
     }
     })
     if (response.status === 200) {
-        navigate('/captain-home')
+        navigate('/captainhome')
     }
 
 }
@@ -30,7 +30,7 @@ const FinishRide = (props) => {
     
         <div>
         <h5 className='p-1 text-center w-full absolute top-0' onClick={()=>{
-                props.setfinishridepanel(false)
+                props.setfinishridepanel(false) 
             }}><i className="text-3xl text-black-200 ri-arrow-down-wide-line"></i></h5>
              <h3 className='text-2xl font-semibold mb-5'>Finish this ride!</h3>
              <div className='flex items-center justify-between p-4 border-2 border-yellow-400 rounded-lg mt-4'>

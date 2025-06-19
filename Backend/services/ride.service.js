@@ -89,7 +89,7 @@ captain:captain._id,
    return ride;
 }
 
-module.exports.startRide = async ({rideId,captain}) => {
+module.exports.startRide = async ({rideId,otp,captain}) => {
     if(!rideId || !otp) {
         throw new Error('Ride ID and OTP are required');
     }
@@ -114,11 +114,6 @@ module.exports.startRide = async ({rideId,captain}) => {
     }, {
         status: 'ongoing',
     })
-
-    sendMessageToSocketId(ride.user.socketId, {
-        event: 'ride-started',
-        data: ride,
-    });
 
     return ride;
 }
@@ -147,10 +142,6 @@ module.exports.endRide = async ({rideId,captain}) => {
         status: 'completed',
     });
 
-    sendMessageToSocketId(ride.user.socketId, {
-        event: 'ride-completed',
-        data: ride,
-    });
 
     return ride;
 }

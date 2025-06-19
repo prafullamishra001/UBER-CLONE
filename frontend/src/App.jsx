@@ -18,9 +18,6 @@ import 'remixicon/fonts/remixicon.css'
 
 const app=() => {
 
-  const ans=useContext(UserDataContext)
-  console.log(ans);
-
     return (
         <div>
           <Routes>

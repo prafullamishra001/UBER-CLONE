@@ -1,5 +1,6 @@
 import React,{useState} from 'react'
 
+
 const Ridepopup = (props) => {
 return(
     <div>
@@ -15,6 +16,7 @@ return(
                 </div>
                 <h5 className='text-lg font-semibold'>2.2 km</h5>
              </div>
+             
 
              <div className='flex gap-2 justify-between flex-col items-center'>
              <div className=' w-full mt-5 '>
@@ -46,14 +48,16 @@ return(
              </div>
           <div className='flex mt-5 w-full  items-center  justify-between '> 
           <button onClick={()=>{
-        props.setridepopuppanel(false)
-        props.confirmRide()
+       
+       props.setridepopuppanel(false) 
         
              }
              } className='mt-1 bg-gray-300 font-semibold p-3 px-10 rounded-lg' >Ignore</button>
 
           <button onClick={()=>{
-        props.setConfirmridepopuppanel(true)    
+          props.confirmRide()
+        props.setConfirmridepopuppanel(true) 
+    
              }
              } className=' bg-green-600 text-white font-semibold p-3 px-10 rounded-lg' >Accept</button>
 

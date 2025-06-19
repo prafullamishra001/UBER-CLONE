@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useRef,useState } from 'react'
 import { Link,useLocation } from 'react-router-dom';
 import FinishRide from '../components/finishride';
 import { useGSAP } from '@gsap/react';

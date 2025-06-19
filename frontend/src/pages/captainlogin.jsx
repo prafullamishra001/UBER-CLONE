@@ -20,7 +20,7 @@ const CaptainLogin = () => {
                 email:email,
                 password
             }
-
+try{
             const response=await axios.post(`${import.meta.env.VITE_BASE_URL}/captains/login`,captain)
 
             if(response.status===200){
@@ -31,17 +31,23 @@ const CaptainLogin = () => {
                 navigate('/captainhome')
             }
             
-            setemail('')
-            setpassword('')
+            setemail('');
+            setpassword('');
         
-        }
+        } catch (error) {
+        alert("Invalid email or password. Please try again.");
+    }
+};
 
 
     return (
          <div className='p-7 h-screen flex flex-col justify-between'>
                     <div>
-                    <img className='w-32 h-auto mb-10' src="https://i.pinimg.com/736x/9e/79/bd/9e79bd2ae97f71e39bc20126a50a0ceb.jpg" alt="" />
+                       <div className="text-3xl ml-0 mb-4 font-bold text-black-100 tracking-wide" style={{ fontFamily: 'Montserrat' }}>
+  WayGo
+</div>
                     <form onSubmit={(e)=>{submithandler(e)}}>
+                        
                         <h3 className='text-lg font-medium mb-2'>What is your email ?</h3>
                         <input 
                         required 
